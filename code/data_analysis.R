@@ -12,6 +12,8 @@ attach(europe_data)
 gdp_cov <- panel.matrices(europe_data, unit='country', time='year', outcome='gdp', treatment='treated')$Y
 pop_cov <- panel.matrices(europe_data, unit='country', time='year', outcome='population', treatment = 'treated')$Y
 
+# Still trying to figure out how to add covariates; the R documentation (https://rdrr.io/github/synth-inference/synthdid/man/synthdid-package.html) 
+# is unclear.
 X_matrix <- abind(gdp_cov, pop_cov, along=3)
 
 X_mat <- europe_data[, c('country', 'year', 'treated', 'gdp', 'population')]
